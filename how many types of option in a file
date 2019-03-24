@@ -1,0 +1,19 @@
+import pandas as pd
+import  numpy as np
+import matplotlib.pyplot as plt
+
+data3= pd.read_csv('OptionsDaily_2018_03_01.csv', low_memory=False)
+data3.columns=['date','product code','strike price','contract month','call/put','time of trades','volume','A','B']
+del data3['B']
+code=data3.ix[:,'product code']
+i=0
+a=0
+kind=['none']*80
+while( i!=len(data3)):
+        if(code[i] not in kind):
+         kind[a]=code[i]
+         a+=1
+         i+=1
+        else:
+         i+=1
+print(kind)
